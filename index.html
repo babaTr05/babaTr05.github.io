@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTA Shorts Factory — AI-Assisted Vertical Video &amp; Shorts Studio</title>
+  <meta name="description" content="GTA Shorts Factory is a locally-run AI-assisted video clipping, smart 9:16 framing, viral hook, and authorized social publishing studio.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">
+        GTA Shorts Factory <span class="brand-badge">Local Studio</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="active" href="./index.html">Home</a>
+        <a href="./terms.html">Terms of Service</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Turn Long-Form Gameplay Into Properly Framed Vertical Shorts</h1>
+      <p class="lead">
+        GTA Shorts Factory is a locally-hosted, AI-assisted video understanding, 9:16 smart framing,
+        and creator publishing workflow. Analyze authorized source videos, generate grounded viral hooks
+        and subtitles, optionally mix licensed background music, and publish directly to your connected
+        social accounts.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="#features">Explore Capabilities</a>
+        <a class="btn secondary" href="./privacy.html">Privacy Policy</a>
+        <a class="btn secondary" href="./terms.html">Terms of Service</a>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Core Capabilities</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Smart 9:16 Framing Engine</h3>
+          <p>
+            Automatically frames 1080&times;1920 vertical video using Smart Fill, Blurred Background,
+            Streamer Focus, Gameplay Focus, and Dynamic Focus layouts with MediaPipe/OpenCV facecam
+            detection and platform UI safe margins.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Economic Partial Retrieval</h3>
+          <p>
+            Analyzes source timestamps with Gemini before retrieving only selected highlight intervals
+            via <code>yt-dlp</code>, keeping bandwidth, storage, and API costs low.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Six Narrative Shorts Styles</h3>
+          <p>
+            Supports Single Highlight, Ranking / Top N (including multi-source compilations with creator
+            attribution), Realization / Discovery, Funny Compilation, Streamer Reactions, and Epic Moments.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Grounded Viral Hooks &amp; Subtitles</h3>
+          <p>
+            Generates and ranks contextual opening hooks grounded in actual transcript speech and audio
+            events—without fabricating quotes—alongside local speech transcription.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Optional Music Post-Processing</h3>
+          <p>
+            Disabled by default. Mixes authorized or royalty-free tracks post-render with speech-aware
+            ducking and <code>-c:v copy</code> remuxing while preserving the clean MP4 export.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Rights-First Social Publishing</h3>
+          <p>
+            Integrates with official APIs (TikTok Content Posting API, YouTube Data API, Instagram
+            Reels, and X) using a local manual-approval queue and strict content rights verification.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>How the Local Pipeline Works</h2>
+      <div class="pipeline-box">
+        Authorized Source URL &rarr; AI Highlight Analysis &rarr; Partial Segment Retrieval &rarr; Local Verification (Facecam / Audio / Speech) &rarr; Smart 9:16 Framing &amp; Hook &rarr; Clean MP4 Render &rarr; Optional Music &rarr; Manual Approval Queue &rarr; Official Platform API
+      </div>
+      <div class="notice">
+        <strong>Local-First Architecture:</strong> GTA Shorts Factory runs on your own workstation. OAuth
+        tokens and job databases stay encrypted on your local machine—never on a third-party SaaS server.
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact &amp; Support</h2>
+      <div class="card">
+        <p>
+          For questions about GTA Shorts Factory, TikTok integration, or data deletion inquiries, please
+          contact the project maintainer at
+          <a href="mailto:contact@example.com">contact@example.com</a>
+          <!-- Replace contact@example.com with your preferred public support email before TikTok review -->
+          .
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2026 GTA Shorts Factory. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="./index.html">Home</a>
+        <a href="./terms.html">Terms of Service</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="mailto:contact@example.com">contact@example.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

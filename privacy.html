@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — GTA Shorts Factory</title>
+  <meta name="description" content="Privacy Policy for GTA Shorts Factory detailing TikTok OAuth integration, local token storage, data retention, and deletion.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">
+        GTA Shorts Factory <span class="brand-badge">Local Studio</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="./index.html">Home</a>
+        <a href="./terms.html">Terms of Service</a>
+        <a class="active" href="./privacy.html">Privacy Policy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container legal-doc">
+    <h1>Privacy Policy</h1>
+    <p class="meta-line">Effective Date: November 17, 2026 &middot; Application: GTA Shorts Factory</p>
+
+    <div class="notice">
+      <strong>Local-First Privacy Model:</strong> GTA Shorts Factory runs locally on the operator's computer.
+      There is no central developer-operated cloud server collecting your videos, analytics, or OAuth tokens.
+      This public website hosts only static informational and legal pages and does not set tracking cookies.
+    </div>
+
+    <h2>1. Information Processed by the Local Application</h2>
+    <p>When you run GTA Shorts Factory on your machine, the Application processes only the data needed to perform video editing and authorized publishing:</p>
+    <ul>
+      <li><strong>User-Submitted Inputs:</strong> Source video URLs, framing/style preferences, custom hook text, and explicit rights confirmation flags.</li>
+      <li><strong>Media &amp; Transcript Data:</strong> Downloaded video segments, rendered 9:16 MP4 clips, thumbnails, and locally generated speech transcripts (<code>.srt</code> / <code>transcript.json</code>) stored under your local <code>data/</code> directory.</li>
+      <li><strong>Publishing Metadata:</strong> Video titles, descriptions, hashtags, creator attribution text, SHA-256 file hashes (used locally to prevent duplicate uploads), and rights verification audit logs.</li>
+    </ul>
+
+    <h2>2. TikTok OAuth Integration &amp; Content Posting API</h2>
+    <p>
+      If you choose to connect a TikTok account for publishing Shorts:
+    </p>
+    <ul>
+      <li>
+        <strong>Purpose &amp; Scopes:</strong> The Application uses TikTok OAuth 2.0 credentials and the official
+        TikTok Content Posting API v2 (<code>open.tiktokapis.com/v2/post/publish/video/init/</code> and
+        <code>status/fetch/</code>) solely to initialize video uploads, transfer your rendered MP4 file, set
+        post metadata (caption/privacy), and poll upload processing status when you approve or schedule a post.
+      </li>
+      <li>
+        <strong>Direct Communication:</strong> API requests are sent directly from your local GTA Shorts Factory
+        backend to TikTok's official endpoints. No intermediary developer server receives your TikTok tokens or
+        video content.
+      </li>
+      <li>
+        <strong>No Unattended Unauthorized Posting:</strong> The publishing queue defaults to manual approval
+        and enforces a local rights gatekeeper check before any upload is dispatched.
+      </li>
+    </ul>
+
+    <h2>3. OAuth Token Storage &amp; Security</h2>
+    <ul>
+      <li>
+        <strong>Encrypted Local Storage:</strong> OAuth access tokens, optional refresh tokens, token expiration
+        timestamps, and granted scopes are stored locally on your device in an SQLite database
+        (<code>data/publishing_tokens.sqlite3</code>).
+      </li>
+      <li>
+        <strong>Encryption &amp; Masking:</strong> Token payloads are encrypted at rest using symmetric
+        <strong>Fernet</strong> encryption (derived via SHA-256 from <code>SHORTSFACTORY_SECRET_KEY</code> or
+        the local machine configuration). Secrets are masked in UI responses and logs.
+      </li>
+      <li>
+        <strong>Static Website Isolation:</strong> This GitHub Pages website does not receive, store, or
+        process any OAuth tokens, API keys, or user media.
+      </li>
+    </ul>
+
+    <h2>4. Third-Party APIs Configured by the Operator</h2>
+    <p>
+      Depending on which optional API keys you configure in your local <code>.env</code> file, the Application
+      may send requests directly from your computer to:
+    </p>
+    <ul>
+      <li><strong>Google Gemini API:</strong> Video URLs/inputs for highlight timestamp analysis (when <code>GEMINI_API_KEY</code> is set).</li>
+      <li><strong>YouTube Data API v3:</strong> Public search/channel/video metadata queries (when <code>YOUTUBE_API_KEY</code> is set) and YouTube Shorts uploads (when YouTube OAuth is connected).</li>
+      <li><strong>TikTok, Instagram, and X APIs:</strong> Video uploads and status checks when you connect those accounts.</li>
+    </ul>
+    <p>Each third-party provider handles data under its own privacy policy.</p>
+
+    <h2>5. Data Retention</h2>
+    <p>
+      All job records, cached video segments, rendered clips, audit logs, and encrypted OAuth tokens remain on
+      your local storage until you delete them or until configured local cache retention rules clean up old
+      downloaded segments.
+    </p>
+
+    <h2>6. Account Disconnection &amp; Data Deletion</h2>
+    <p>You can disconnect your TikTok account and delete your data at any time:</p>
+    <ul>
+      <li>
+        <strong>Disconnect in App:</strong> In the local GTA Shorts Factory UI under the <strong>Publishing</strong>
+        tab, click <strong>Disconnect</strong> next to TikTok (or call
+        <code>DELETE /api/publishing/platforms/tiktok</code>). This immediately deletes the encrypted TikTok
+        OAuth token record from <code>data/publishing_tokens.sqlite3</code>.
+      </li>
+      <li>
+        <strong>Revoke in TikTok:</strong> You can also revoke GTA Shorts Factory's access at any time from your
+        TikTok app under <em>Settings and privacy &rarr; Security and permissions &rarr; Apps and services</em>.
+      </li>
+      <li>
+        <strong>Delete Local Data:</strong> To erase all local jobs, cached clips, publishing queues, and audit
+        logs, delete the local <code>data/</code> directory on your machine.
+      </li>
+    </ul>
+
+    <h2>7. Changes to This Privacy Policy</h2>
+    <p>
+      We may update this Privacy Policy to reflect changes in the Application or supported integrations. Any
+      updates will be published on this page with an updated effective date.
+    </p>
+
+    <h2 id="contact">8. Contact</h2>
+    <p>
+      For privacy questions or assistance with disconnection/deletion, contact
+      <a href="mailto:contact@example.com">contact@example.com</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2026 GTA Shorts Factory. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="./index.html">Home</a>
+        <a href="./terms.html">Terms of Service</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="mailto:contact@example.com">contact@example.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
